@@ -27,7 +27,7 @@ spring:
 #    password : 1111
 
 mybatis:
-  type-aliases-package: com.CusTomSoft.mapper
+  type-aliases-package: com.CusTomSoft.demo.mapper
   mapper-locations: sqlmapper/*.xml
   
  

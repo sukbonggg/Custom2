@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.CusTomSoft.demo.mapper.MemberMapper">
+    <select id="idcheck" parameterType="String" resultType="int">
+      select count (*) from user_member
+		where custom_user_nick = #{custom_user_nick}
+    </select>
+    
+    <insert id="doJoin" >
+     INSERT INTO  user_member
+     	
+      <!--   custom_user_nick = #{custom_user_nick},
+    	custom_user_name = #{custom_user_name},
+    	custom_user_brith = #{custom_user_brith},
+    	custom_user_email = #{custom_user_email},
+    	custom_user_addr = #{custom_user_addr},
+    	custom_user_phone = #{custom_user_phone},
+    	custom_user_pwsd = #{custom_user_pwsd} -->
+    	
+    	(	  custom_user_nick
+			, custom_user_name
+			, custom_user_birth
+			, custom_user_email
+			, custom_user_addr
+			, custom_user_phone
+			, custom_user_pwsd
+			, custom_user_auth
+			, custom_user_del_yn
+			,custom_user_reg_date
+			,custom_user_mod_date
+		)VALUES (
+			  #{custom_user_nick}
+			, #{custom_user_name}
+			, #{custom_user_birth}
+			, #{custom_user_email}
+			, #{custom_user_addr}
+			, #{custom_user_phone}
+			, #{custom_user_pwsd}
+			, '2'
+			, 'no'
+			,now()
+			,now() 
+	
+			
+		);
+    </insert>
+</mapper>
