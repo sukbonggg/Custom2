@@ -205,7 +205,7 @@ function join(){
 	 $.ajax({
 		   type: 'post', //타입 (get,post,put등등)
 		   url:    'doJoin' ,     //요청할 서버 url
-		   data : data,
+		   data: JSON.stringify(data),
 		   dataType:'json',		
 		   contentType: 'application/json; charset=utf-8',
 		success : function(success){

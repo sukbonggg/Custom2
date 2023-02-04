@@ -21,7 +21,7 @@
     	
     	(	  custom_user_nick
 			, custom_user_name
-			, custom_user_birth
+			, custom_user_brith
 			, custom_user_email
 			, custom_user_addr
 			, custom_user_phone
@@ -33,7 +33,7 @@
 		)VALUES (
 			  #{custom_user_nick}
 			, #{custom_user_name}
-			, #{custom_user_birth}
+			, #{custom_user_brith}
 			, #{custom_user_email}
 			, #{custom_user_addr}
 			, #{custom_user_phone}
