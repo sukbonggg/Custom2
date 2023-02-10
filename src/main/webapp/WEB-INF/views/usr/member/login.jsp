@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en" class="fullscreen-bg">
 
@@ -33,14 +34,15 @@
 								<div class="logo text-center"><img src="/img/logo-dark.png" alt="Klorofil Logo"></div>
 								<p class="lead">Login to your account</p>
 							</div>
-							<form class="form-auth-small" action="index.php">
+							
+							<form id="inputDto"  action="doLogin" method="post"> <!-- inputclass="form-auth-small" action="index.php"> -->
 								<div class="form-group">
-									<label for="signin-email" class="control-label sr-only">Email</label>
-									<input type="email" class="form-control" id="signin-email" value="samuel.gold@domain.com" placeholder="Email">
+									<label for="signin-email" class="control-label sr-only">id</label>
+									<input type="text" class="form-control" id="custom_user_nick" name="custom_user_nick"  placeholder="id">
 								</div>
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
-									<input type="password" class="form-control" id="signin-password" value="thisisthepassword" placeholder="Password">
+									<input type="password" class="form-control" id="custom_user_pwsd" name="custom_user_pwsd" placeholder="Password">
 								</div>
 								<div class="form-group clearfix">
 									<label class="fancy-checkbox element-left">
@@ -48,12 +50,13 @@
 										<span>Remember me</span>
 									</label>
 								</div>
-								<button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+								<button  type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
 								<button type="button" class="btn btn-primary btn-lg btn-block" style="background-color: grey;"  onclick="location.href='join';">Sign Up</button>
 								<div class="bottom">
 									<span class="helper-text"><i class="fa fa-lock"></i> <a href="#">Forgot password?</a></span>
 								</div>
 							</form>
+						
 						</div>
 					</div>
 					<div class="right">
@@ -70,5 +73,7 @@
 	</div>
 	<!-- END WRAPPER -->
 </body>
+<script>
+</script>
 
 </html>

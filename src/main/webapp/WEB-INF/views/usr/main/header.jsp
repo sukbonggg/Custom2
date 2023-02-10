@@ -1,5 +1,6 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="java.net.URLEncoder"%>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  <%@page import="java.net.URLEncoder"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -33,11 +34,8 @@
 <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon.png">
 
 </head>
-
 <body>
-
-		<h1>테스트</h1>
-		<!-- WRAPPER -->
+	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
@@ -50,30 +48,40 @@
 						<i class="lnr lnr-arrow-left-circle"></i>
 					</button>
 				</div>
+			
+				<c:if test="${empty sessionScope.custom_user_nick }">
 				<div class="navbar-btn navbar-btn-right">
-					<a class="btn btn-success update-pro"> <span>login</span></a> <a
-						class="btn  "> <span>Sing up</span></a>
+				<!-- 세션 저장되어있는 널 값이면 -->							
+				
+					<a class="btn btn-success update-pro"> <span>login</span></a>
+					 <a class="btn "><span>Sing up</span></a>
 				</div>
+				</c:if>		
+				
+				<c:if test="${!empty sessionScope.custom_user_nick }">
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
-
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"><img src="/img/user.png"
-								class="img-circle" alt="Avatar"> <span>로그인 후 이용해주세요</span>
-								<i class="icon-submenu lnr lnr-chevron-down"></i></a>
-							<ul class="dropdown-menu">
-								<li><a href="#"><i class="lnr lnr-user"></i> <span>My
-											Profile</span></a></li>
-								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
-								<li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
-							</ul></li>
-						<!-- <li>
-							<a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
-						</li> -->
+						 <form action="doLogout">
+						<li class="dropdown">
+						<img src="/img/user.png" class="img-circle" alt="Avatar"><span>${sessionScope.custom_user_nick }님 환영합니다</span>
+						<button type="submit" style="margin-top:25px; padding:7px;  background-color:#00FF00 " >logOut</button>
+						</form>
 					</ul>
 				</div>
+				</c:if>
+				
 			</div>
 		</nav>
-		<!-- END NAVBAR -->
+		<div id="sidebar-nav" class="sidebar">
+			<div class="sidebar-scroll">
+				<nav>
+					<ul class="nav">
+						<li><a href="../member/main" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+						<li><a href="../board/listBoard" class=""><i class="lnr lnr-dice"></i> <span>Board</span></a></li>
+						<li><a href="typography.html" class=""><i class="lnr lnr-text-format"></i> <span>JqGrid</span></a></li>
+						<li><a href="icons.html" class=""><i class="lnr lnr-linearicons"></i> <span>API</span></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
 		

@@ -37,7 +37,7 @@
 							<input type="text"  id="custom_user_addr" name="custom_user_email"class="email panel panel-headline" maxlength="20"style="width: 800px;" placeholder="Addr">
 						</div>
 						<div>
-							<input onclick="join()" type="button"style="width: 1180px; background-color: #B0E0E6; color: white"value="Join">
+							<input onclick="join();" type="button"style="width: 1180px; background-color: #B0E0E6; color: white"value="Join">
 						</div>
 
 					</div>
@@ -118,7 +118,6 @@ function join(){
 	
 	if($('#custom_user_name').val()==""){
 		alert("이름을 입력하세요.");
-		console.log(custom_user_name); 
 		$('#custom_user_name').focus();
 	}
 	else if(!custom_user_name.test($('#custom_user_name').val())){
@@ -182,7 +181,6 @@ function join(){
 		alert("비밀번호 재확인이 잘못되었습니다.")
 		$('#checkPwd').focus();
 	}
-	
 	else{
 	 let custom_user_name = $('#custom_user_name').val();
 	 let custom_user_nick = $('#custom_user_nick').val();
@@ -200,19 +198,18 @@ function join(){
 			  'custom_user_phone':custom_user_phone,
 			  'custom_user_pwsd':custom_user_pwsd
 	 }
-
 	 console.log(data);
 	 $.ajax({
 		   type: 'post', //타입 (get,post,put등등)
 		   url:    'doJoin' ,     //요청할 서버 url
-		   data: JSON.stringify(data),
+		   data: JSON.stringify(data), //JavaScript 값이나 객체를 JSON 문자열로 변환합니다.
 		   dataType:'json',		
 		   contentType: 'application/json; charset=utf-8',
 		success : function(success){
 			if(success===1)
 			alert("회원가입되었습니다.");
+			location.href="login";
 			return;
-			console.log(data);
 			
 	},//success
 		error : function(success){
@@ -220,13 +217,9 @@ function join(){
 				alert("회원가입 실패");	
 				return;
 			}
-			
 			} //error
 		})//ajax
 	}//else 
 }
-
 </script>
-
-
 </html>

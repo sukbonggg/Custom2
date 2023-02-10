@@ -8,6 +8,12 @@
 		where custom_user_nick = #{custom_user_nick}
     </select>
     
+    
+   <select id="doLogin" resultType="HashMap" >
+   select * from user_member
+   where custom_user_nick = #{custom_user_nick} and custom_user_pwsd = #{custom_user_pwsd} </select>
+    
+    
     <insert id="doJoin" >
      INSERT INTO  user_member
      	
