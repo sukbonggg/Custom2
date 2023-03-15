@@ -108,9 +108,9 @@ $('#custom_user_nick').keyup(function(){
 
 });
 function join(){
-	let custom_user_name = /^[가-힣]+$/;
+	let custom_user_name = /^[가-힣]+$/; //한글만 가능
 	let custom_user_birth = /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
-	let custom_user_nick = /^[a-z0-9_-]{4,10}$/;
+	let custom_user_nick = /^[a-z0-9_-]{4,10}$/; //영문자 소문자, 숫자, "-", "_" 로만 구성된 길이 2 ~ 10자리 사이 문자열
 	let custom_user_email = /(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
 	let custom_user_addr = /(([가-힣A-Za-z·\d~\-\.]{2,}(로|길).[\d]+)|([가-힣A-Za-z·\d~\-\.]+(읍|동)\s)[\d]+)/;
 	let custom_user_phone = /^[0-9]{11,11}$/;

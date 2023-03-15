@@ -8,6 +8,9 @@
 		where custom_user_nick = #{custom_user_nick}
     </select>
     
+    <select id="getGrid" resultType="com.CusTomSoft.demo.dto.MemberDto">
+    select * from user_member
+    </select>
     
    <select id="doLogin" resultType="HashMap" >
    select * from user_member

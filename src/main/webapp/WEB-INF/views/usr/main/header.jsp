@@ -1,6 +1,7 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
   <%@page import="java.net.URLEncoder"%>
+  <c:set var ="Path" value="${pageContext.request.contextPath}"></c:set>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -11,12 +12,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<!-- VENDOR CSS -->
+
 <!-- Javascript -->
-<script src="/vendor/jquery/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/ui.jqgrid.css">
+     <!-- <script src="/scripts/jquery-3.6.3.min.js"></script> -->
+      <script type="text/javascript" src="/js/jquery-3.6.3.min.js"></script> 
+     <script type="text/javascript" src="/js/i18n/grid.locale-kr.js"></script>
+    <script type="text/javascript" src="/js/jquery.jqGrid.min.js"></script>
+<!-- <script src="/vendor/jquery/jquery.min.js"></script> -->
+
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="/scripts/klorofil-common.js"></script>
+
 <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/vendor/font-awesome/css/font-awesome.min.css">
@@ -78,8 +86,9 @@
 					<ul class="nav">
 						<li><a href="../member/main" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
 						<li><a href="../board/listBoard" class=""><i class="lnr lnr-dice"></i> <span>Board</span></a></li>
-						<li><a href="typography.html" class=""><i class="lnr lnr-text-format"></i> <span>JqGrid</span></a></li>
-						<li><a href="icons.html" class=""><i class="lnr lnr-linearicons"></i> <span>API</span></a></li>
+						<li><a href="../jqgrid/jqgrid" class=""><i class="lnr lnr-text-format"></i> <span>JqGrid</span></a></li>
+						<li><a href="../api/api" class=""><i class="lnr lnr-linearicons"></i> <span>API</span></a></li>
+						<li><a href="../board/wordle" class=""><i class="lnr lnr-linearicons"></i> <span>wordle</span></a></li>
 					</ul>
 				</nav>
 			</div>

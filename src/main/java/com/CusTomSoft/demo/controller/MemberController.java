@@ -62,7 +62,7 @@ public class MemberController {
 	public int doJoin(@RequestBody MemberDto memberdto) {
 		System.out.println(memberdto);
 		int success = memberservice.doJoin(memberdto);
-		System.out.println("성공:" + success);
+		/* System.out.println("성공:" + success); */
 		return success;
 	}
 
@@ -71,8 +71,10 @@ public class MemberController {
 	@ResponseBody
 	public ModelAndView doLogin(@ModelAttribute("inputDto") MemberDto inputDto, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirect) throws IOException {
-		System.out.println("로그인");
-		System.out.println("입력한 아이디와 비밀번호:" + inputDto.getCustom_user_nick() + "/" + inputDto.getCustom_user_pwsd());
+		/*
+		 * System.out.println("로그인"); System.out.println("입력한 아이디와 비밀번호:" +
+		 * inputDto.getCustom_user_nick() + "/" + inputDto.getCustom_user_pwsd());
+		 */
 
 		ModelAndView mav = new ModelAndView();
 		response.setContentType("text/html; charset=UTF-8");

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.CusTomSoft.demo.mapper.BoardMapper">
     
-    <insert id="writeBoard" parameterType="String" >
+    <insert id="writeBoard" parameterType="com.CusTomSoft.demo.dto.BoardDto"  >
      INSERT INTO  board(
     		   board_reg_date
     		  ,board_mod_date
@@ -13,6 +13,7 @@
 			  ,board_writer
 			  ,board_img_path
 			  ,board_del_yn
+			  
 			
 		)VALUES (
 			  now()
@@ -25,12 +26,62 @@
 		);
     </insert>
     
-    <select id="listBoard" resultType="hashmap" >
+    
+	  <select id="boardListCnt" resultType="int" >
+     	 SELECT count(*)
+       	 FROM board
+         
+    </select>
+    
+    
+    <select id="listBoard"  resultType="hashmap" parameterType="hashmap" >
+      <![CDATA[
      	 select * from board 
           WHERE  board_title LIKE CONCAT('%','${searchKeyword}','%') or board_text LIKE CONCAT('%','${searchKeyword}','%')  
-         order by board_seq DESC
+          order by board_seq DESC
+          LIMIT #{Criteria.pageStart}, #{Criteria.perPageNum}
+           ]]>
+         
     </select>
+    
+    <!-- 게시물 총 개수 -->
+	<select id="count" resultType="int">
+			select count(board_seq) from board
+	</select>
+    
+    
+	<select id="detail" resultType="com.CusTomSoft.demo.dto.BoardDto"  parameterType="int">
+		select * from board
+		where board_seq = #{board_seq}
+	</select>
+	
+	<delete id="remove"  >
+		delete  from board
+		where board_seq = #{board_seq}
+	</delete>
 
+	<select resultType="com.CusTomSoft.demo.dto.BoardDto"  id="update" parameterType="int">
+	select * from board 
+	where board_seq = #{board_seq} </select>
+
+	<update id="updateBoard" parameterType="hashMap" >
+		update board 
+		set 
+		board_title=#{board_title},board_text=#{board_text}
+		where board_seq =#{board_seq}
+	</update>
+	
+	<insert id="comment" parameterType="com.CusTomSoft.demo.dto.CommentDto" >
+	Insert into comment(board_seq,writer,date,content,delete_yn)
+	VALUES (#{board_seq},#{writer},now(),#{content},'N')
+	</insert>
+	
+	<select id="getCommentList"  resultType="com.CusTomSoft.demo.dto.CommentDto">
+	select * 
+	from comment
+	where board_seq = #{board_seq} </select>
+	
+	
  	
  	 
  	

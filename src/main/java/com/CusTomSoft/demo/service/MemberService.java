@@ -43,6 +43,10 @@ public class MemberService {
 		  return membermapper.doLogin(inputDto); 
 		 
 	  }
+	public List<MemberDto> getGrid() {
+		
+		return membermapper.getGrid(); 
+	}
 		
 	 
 

@@ -1,5 +1,7 @@
 package com.CusTomSoft.demo.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +19,18 @@ public class BoardDto {
 	private String board_img_path;	/*유저 휴대폰번호*/
 	private String board_del_yn; /*게시글 삭제여부*/
 	private String keyword;
+	private MultipartFile imgfile;
 	
+
+	
+	
+	
+	public MultipartFile getImgfile() {
+		return imgfile;
+	}
+	public void setImgfile(MultipartFile imgfile) {
+		this.imgfile = imgfile;
+	}
 	public String getKeyword() {
 		return keyword;
 	}
@@ -72,5 +85,6 @@ public class BoardDto {
 	public void setBoard_del_yn(String board_del_yn) {
 		this.board_del_yn = board_del_yn;
 	}
+
 
 }

@@ -15,4 +15,6 @@ public interface MemberMapper {
 	int doJoin(MemberDto memberdto);
 
 	List<Map<Object, Object>> doLogin(MemberDto inputDto);
+
+	List<MemberDto> getGrid();
 }
