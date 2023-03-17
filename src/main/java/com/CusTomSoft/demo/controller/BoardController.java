@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.CusTomSoft.demo.dto.BoardDto;
 import com.CusTomSoft.demo.dto.CommentDto;
+import com.CusTomSoft.demo.dto.HeartDto;
 import com.CusTomSoft.demo.page.Criteria;
 import com.CusTomSoft.demo.page.Paging;
 import com.CusTomSoft.demo.service.BoardService;
@@ -127,7 +128,17 @@ public class BoardController {
 			 System.out.println("댓글성공시:"+result);
 			 return "redirect:/usr/board/detail?board_seq="+dto.getBoard_seq();
 		}
-
+	//게시글 추천수
+		@PostMapping("heart")
+		@ResponseBody
+		public String heart(HeartDto like,  @RequestParam Map<Object,Object> hdto) throws Exception {
+			System.out.println(hdto);
+			String result = boardservice.heart(hdto);
+			System.out.println("추천성공시 :"+result);
+			
+			
+			  return "redirect:/usr/board/detail?board_seq="+hdto.get("seq");
+			}
 
 }
 

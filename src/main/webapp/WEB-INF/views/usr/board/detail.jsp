@@ -57,14 +57,34 @@
 		
 </table>
 </div>
+<!-- 추천 기능 -->
+		<div>
+			<div class="w3-border w3-center w3-padding">
+				<c:if test="${ sessionScope.custom_user_nick == null }">
+					추천 기능은 <button type="button" id="login"><b class="w3-text-blue">로그인</b></button> 후 사용 가능합니다.<br />
+					<i class="fa fa-heart" style="font-size:16px;color:red"></i>
+					<span class="rec_count"></span>					
+				</c:if>
+			
+			</div>
+		</div>
+
 
 <div style="margin-left:1px;">
 <a href="listBoard" class="btn btn-primary">목록</a>
 <a href="modify?board_seq=${detailBoard.board_seq}" class="btn btn-primary">수정</a>
+			<c:if test="${sessionScope.custom_user_nick != null }">
+					<input type="hidden" id="board_seq" value="${detailBoard.board_seq}"  />
+					<input type="hidden" id="writer" value="${sessionScope.custom_user_nick }"  />
+					<button onclick="heart();"  class="w3-button w3-black w3-round" >
+							<i class="fa fa-heart" style="font-size:16px;color:red"></i>
+						&nbsp;<span class="rec_count"></span>
+					</button> 
+				</c:if>
 </div>
 <!--  </form>  -->
 <div class="card my-4">
-		<h5 class="card-header">Leave a Comment:</h5>
+		<h5 class="card-header">댓글:</h5>
 		<div class="card-body">
 			<form name="comment-form" action="comment" method="post" autocomplete="off">
 				<div class="form-group">
@@ -106,5 +126,27 @@
 		</div>
 	</div>
 </body>
+<script>
+function heart(){
+	 var seq = $("#board_seq").val();
+	 var id = $('#writer').val();
+	 var alldata={"seq":seq,"id":id}; 
+		console.log(alldata);
+	
+	  $.ajax({
+		   type: 'post', //타입 (get,post,put등등)
+		   url:    'heart', //요청할 서버 url
+		   data : alldata,
+		   dataType:'json',		
+		success : function(cnt){
+			if(success===1)
+			alert("추천완료");
+			location.href="detailBoard?";
+			return;
+			
+	}
+		});//ajax */
+ }
+</script>
 
 </html>

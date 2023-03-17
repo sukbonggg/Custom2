@@ -82,7 +82,16 @@
 	where board_seq = #{board_seq} </select>
 	
 	
- 	
+ 	<insert id="heart" parameterType="hashMap"  >
+     INSERT INTO  heart(
+    		   board_seq
+    		  ,custom_user_nick
+		)VALUES (
+			  #{board_seq}
+			, #{custom_user_nick}
+			
+		);
+    </insert>
  	 
  	
   		
