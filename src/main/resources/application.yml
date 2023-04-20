@@ -26,7 +26,7 @@ spring:
           
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/CustomEdu
+    url: jdbc:mariadb://localhost:3306/customedu
     username: root
     password: 128900
 #    password : 1111

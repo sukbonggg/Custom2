@@ -128,20 +128,26 @@
 </body>
 <script>
 function heart(){
-	 var seq = $("#board_seq").val();
-	 var id = $('#writer').val();
-	 var alldata={"seq":seq,"id":id}; 
-		console.log(alldata);
+	 var board_seq = $("#board_seq").val();
+	 var custom_user_nick = $('#writer').val();
+	
+		
 	
 	  $.ajax({
 		   type: 'post', //타입 (get,post,put등등)
 		   url:    'heart', //요청할 서버 url
-		   data : alldata,
+		   data : {"board_seq":board_seq,"custom_user_nick":custom_user_nick},
 		   dataType:'json',		
-		success : function(cnt){
-			if(success===1)
-			alert("추천완료");
-			location.href="detailBoard?";
+		success : function(findLike){
+			if(findLike===0){
+				alert("추천완료");
+				location.href="/usr/board/detail?board_seq="+board_seq;
+			}else{
+				alert("이미 추천한 게시글입니다.");
+				location.href="/usr/board/detail?board_seq="+board_seq;
+			}
+			
+			
 			return;
 			
 	}

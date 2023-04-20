@@ -41,6 +41,7 @@ th, td {
 									<th>제목</th>
 									<th>내용</th>
 									<th>작성자</th>
+									<th>추천수</th>
 								</tr>
 							</thead>
 
@@ -61,6 +62,7 @@ th, td {
 												</a></th>
 												<th><c:out value="${listBoard.board_text}"/></th>
 												<th><c:out value="${listBoard.board_writer}"/></th>
+												<th><c:out value="${listBoard.board_count}"/></th>
 											</tr>
 										</tbody>
 									</c:forEach>
@@ -90,21 +92,7 @@ th, td {
 	
 </body>
 <script >
-/* function delBtn(){
-	if($("input:checkbox[name='chk_list']:checked").length ===0){
-		alert('삭제할 항목을 선택하세요');
-		
-		return;
-	}
-		$("input:checkbox[name='chk_list']:checked").each(function(k,kVal){
-			console.log("kVal ::",kVal.parentElement.parentElement.parentElement);
-			let a =kVal.parentElement.parentElement.parentElement;
-			$(a).remove();
-			
-			
-			
-		});
-}; */
+
 function delBtn(){
 	
 	let checkbox = $("input[name='checkbox']");
@@ -146,6 +134,11 @@ function delBtn(){
 		}
 	}
 }
+
+ 
+
+
+
 
 </script>
 

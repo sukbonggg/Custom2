@@ -19,7 +19,12 @@
       <script type="text/javascript" src="/js/jquery-3.6.3.min.js"></script> 
      <script type="text/javascript" src="/js/i18n/grid.locale-kr.js"></script>
     <script type="text/javascript" src="/js/jquery.jqGrid.min.js"></script>
-<!-- <script src="/vendor/jquery/jquery.min.js"></script> -->
+    <script type="text/javascript">
+
+    
+  
+
+<!--  <script src="/vendor/jquery/jquery.min.js"></script>  -->
 
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
@@ -80,6 +85,10 @@
 				
 			</div>
 		</nav>
+		</div>
+		
+		</html>
+
 		<div id="sidebar-nav" class="sidebar">
 			<div class="sidebar-scroll">
 				<nav>
@@ -93,4 +102,4 @@
 				</nav>
 			</div>
 		</div>
-		
+	

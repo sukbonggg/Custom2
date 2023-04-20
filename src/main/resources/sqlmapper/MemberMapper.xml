@@ -55,4 +55,38 @@
 			
 		);
     </insert>
+    
+
+   <select id="dolist" resultType="HashMap" >
+	SELECT 
+		D.DEPT_CD ,
+		D.DEPT_NM ,
+		D2.DEPTINFO_CD ,
+		D2.DEPTINFO_NM 
+	FROM test.dept D 
+	LEFT JOIN test.deptinfo D2 on D.DEPT_CD = D2.DEPT_CD
+	ORDER BY d2.DEPTINFO_CD
+	
+   </select>
+   
+   
+  <!--  <select id="dolist"  resultType="hashMap" >
+	SELECT 
+		D.DEPT_CD ,
+		D.DEPT_NM ,
+		D2.DEPTINFO_CD ,
+		D2.DEPTINFO_NM 
+	FROM test.dept D 
+	LEFT JOIN test.deptinfo D2 on D.DEPT_CD = D2.DEPT_CD
+	ORDER BY d2.DEPTINFO_CD
+	
+   </select> -->
+   
+     <select id="checkemail" parameterType="String" resultType="int">
+    select count(custom_user_email)
+     from user_member
+   	where custom_user_email = #{custom_user_email}
+    </select>
+   
+   
 </mapper>

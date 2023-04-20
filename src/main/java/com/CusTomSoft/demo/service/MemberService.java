@@ -47,6 +47,15 @@ public class MemberService {
 		
 		return membermapper.getGrid(); 
 	}
+	public List<Map<String, Object>> dolist() {
+		return membermapper.dolist(); 
+		
+	}
+	
+	public int checkemail(String custom_user_email) {
+		System.out.println("ServiceTest");
+		return membermapper.checkemail(custom_user_email); 
+	}
 		
 	 
 

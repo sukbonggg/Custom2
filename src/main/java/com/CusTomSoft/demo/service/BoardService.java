@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.CusTomSoft.demo.dto.BoardDto;
 import com.CusTomSoft.demo.dto.CommentDto;
-import com.CusTomSoft.demo.dto.HeartDto;
 import com.CusTomSoft.demo.mapper.BoardMapper;
 import com.CusTomSoft.demo.page.Criteria;
 
@@ -54,10 +53,19 @@ public class BoardService {
 		
 		return  boardmapper.comment(dto); 
 	}
-	public String heart(Map<Object, Object> hdto) {
-		System.out.println("serivce:"+hdto);
-		return boardmapper.heart(hdto); 
+
+	public int heart(String custom_user_nick, int board_seq) {
+		System.out.println("service:"+custom_user_nick);
+		System.out.println("service:"+board_seq);
+		
+		return boardmapper.heart(custom_user_nick,board_seq);
 	}
+	public int findLike(String custom_user_nick, int board_seq) {
+		
+		
+		return boardmapper.findLike(custom_user_nick,board_seq);
+	}
+	
 
 	
 

@@ -1,11 +1,14 @@
 package com.CusTomSoft.demo.controller;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +21,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.CusTomSoft.demo.dto.BoardDto;
 import com.CusTomSoft.demo.dto.CommentDto;
-import com.CusTomSoft.demo.dto.HeartDto;
 import com.CusTomSoft.demo.page.Criteria;
 import com.CusTomSoft.demo.page.Paging;
 import com.CusTomSoft.demo.service.BoardService;
@@ -62,7 +64,7 @@ public class BoardController {
 	// 게시물 리스팅
 	// 게시물 검색기능 + 페이징 추가
 	@GetMapping("listBoard")
-	public String listBoard(Criteria cri,String searchKeyword, Model model) {
+	public String listBoard(Criteria cri,String searchKeyword,int board_count, Model model) {
 		
 		  // 전체 글 개수
         int boardListCnt = boardservice.boardListCnt();
@@ -73,9 +75,13 @@ public class BoardController {
         paging.setTotalCount(boardListCnt);    
 		
         List<Map<String, Object>> listBoard = boardservice.listBoard(searchKeyword,cri);
+       
         
 		model.addAttribute("listBoard", listBoard);
 		model.addAttribute("paging",paging);
+		
+		
+		
  
 
 		return "/usr/board/listBoard";
@@ -131,13 +137,32 @@ public class BoardController {
 	//게시글 추천수
 		@PostMapping("heart")
 		@ResponseBody
-		public String heart(HeartDto like,  @RequestParam Map<Object,Object> hdto) throws Exception {
-			System.out.println(hdto);
-			String result = boardservice.heart(hdto);
-			System.out.println("추천성공시 :"+result);
+		public int heart(String custom_user_nick , int board_seq ) {
+			System.out.println(custom_user_nick);
+			System.out.println(board_seq);
+			
+		
+			
+			int findLike = boardservice.findLike(custom_user_nick,board_seq);
+			
+			if(findLike==0) {
+				boardservice.heart(custom_user_nick,board_seq);
+			}
+		
+			  return findLike;
+			}
+		
+		//게시글 추천 했는지 검색기능
+		@PostMapping("findLike")
+		public int findLike(String custom_user_nick , int board_seq,Model model ) throws Exception {
+			
+			int like  = boardservice.heart(custom_user_nick,board_seq);
+			
+			model.addAttribute("lkie",like);
 			
 			
-			  return "redirect:/usr/board/detail?board_seq="+hdto.get("seq");
+			
+			  return like;
 			}
 
 }

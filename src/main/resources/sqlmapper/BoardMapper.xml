@@ -82,22 +82,20 @@
 	where board_seq = #{board_seq} </select>
 	
 	
- 	<insert id="heart" parameterType="hashMap"  >
+ 	<insert id="heart" parameterType="com.CusTomSoft.demo.dto.HeartDto"  >
      INSERT INTO  heart(
     		   board_seq
     		  ,custom_user_nick
 		)VALUES (
 			  #{board_seq}
 			, #{custom_user_nick}
-			
 		);
     </insert>
  	 
  	
-  		
-  	
- 	
- 	
-        
+  	<select id="findLike"  resultType="int">
+		select count(*)
+		  from heart
+		where board_seq = #{board_seq} and custom_user_nick = #{custom_user_nick} </select>
     
 </mapper>

@@ -17,4 +17,8 @@ public interface MemberMapper {
 	List<Map<Object, Object>> doLogin(MemberDto inputDto);
 
 	List<MemberDto> getGrid();
+
+	List<Map<String, Object>> dolist();
+
+	int checkemail(String custom_user_email);
 }

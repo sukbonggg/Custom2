@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Param;
 
 import com.CusTomSoft.demo.dto.BoardDto;
 import com.CusTomSoft.demo.dto.CommentDto;
-import com.CusTomSoft.demo.dto.HeartDto;
 import com.CusTomSoft.demo.page.Criteria;
 
 @Mapper
@@ -29,9 +28,11 @@ public interface BoardMapper {
 	int updateBoard(Map<String, Object> map);
 	//댓글 작성
 	int comment(CommentDto dto);
-	List<CommentDto> getCommentList(int board_seq);
-	String heart(Map<Object, Object> hdto);
-
 	
+	List<CommentDto> getCommentList(int board_seq);
+	
+	int heart(@Param("custom_user_nick") String custom_user_nick, @Param("board_seq")int board_seq);
+	
+	int findLike(@Param("custom_user_nick")  String custom_user_nick, @Param("board_seq")   int board_seq);
 
 }
